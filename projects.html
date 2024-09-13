@@ -52,70 +52,130 @@
         transition-delay: 0.4s;
       }
 
-
-
       /* Scroll Button */
-#scrollButton {
-  position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px; /* Set width and height to be equal */
-    height: 60px;
-    background-color: #073463;
-    color: white;
-    border-radius: 50%; /* Make it circular */
-    font-size: 28px;
-    text-align: center;
-    line-height: 60px; /* Vertically center the icon */
-    text-decoration: none;
-    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.5);
-    transition: all 0.3s ease;
-    animation: bounce 2s infinite;
-    z-index: 1000;
-}
+      #scrollButton {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px; /* Set width and height to be equal */
+        height: 60px;
+        background-color: #073463;
+        color: white;
+        border-radius: 50%; /* Make it circular */
+        font-size: 28px;
+        text-align: center;
+        line-height: 60px; /* Vertically center the icon */
+        text-decoration: none;
+        box-shadow: 0 8px 15px rgba(0, 123, 255, 0.5);
+        transition: all 0.3s ease;
+        animation: bounce 2s infinite;
+        z-index: 1000;
+      }
 
-/* Hover Effect */
-#scrollButton:hover {
-    background-color: #0056b3;
-    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7);
-    transform: translateY(-5px);
-    cursor: pointer;
-}
-
-/* Bounce Animation */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
+      /* Hover Effect */
+      #scrollButton:hover {
+        background-color: #0056b3;
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7);
         transform: translateY(-5px);
-    }
-}
+        cursor: pointer;
+      }
 
-/* Glowing Effect */
-#scrollButton::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: 50%;
-    background: rgba(0, 123, 255, 0.5);
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+      /* Bounce Animation */
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
 
-#scrollButton:hover::before {
-    opacity: 1;
-}
+      /* Glowing Effect */
+      #scrollButton::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        background: rgba(0, 123, 255, 0.5);
+        filter: blur(10px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
+      #scrollButton:hover::before {
+        opacity: 1;
+      }
 
+      /* Sidebar styles */
+      .w3-sidebar {
+        z-index: 3;
+        width: 300px;
+        background-image: url("./assets/images/back1.jpg");
+        background-size: cover;
+        display: none; /* Hidden by default for small screens */
+      }
+      /* Show sidebar on larger screens */
+      @media (min-width: 601px) {
+        .w3-sidebar {
+          display: block;
+        }
+        .w3-main {
+          margin-left: 300px; /* The same width as the sidebar */
+        }
+      }
 
+      @media (max-width: 600px) {
+        .w3-main {
+          margin-top: 47px; /* Adjust this value as needed */
+        }
+
+        .w3-sidebar.opened {
+          /* margin-top: 12px; */
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          height: 100%; /* Ensure the sidebar takes full height */
+        }
+      }
+
+      /* Fix the button position and z-index */
+      .w3-top.w3-hide-large {
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      #menu-toggle {
+        background-color: #808080; /* Grey background */
+        color: white; /* White text color */
+        font-size: 16px; /* Adjust font size as needed */
+        padding: 10px; /* Adjust padding as needed */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Rounded corners (optional) */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s; /* Smooth background color transition */
+      }
+
+      #menu-toggle:hover {
+        background-color: #666666; /* Darker grey on hover */
+      }
+
+      .w3-top.w3-hide-large span {
+        margin-left: 0px; /* Adjusted margin to avoid content overlap */
+      }
     </style>
   </head>
   <body
@@ -139,14 +199,6 @@
     >
       <br />
       <div class="w3-container">
-        <a
-          href="#"
-          onclick="w3_close()"
-          class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
-          title="close menu"
-        >
-          <i class="fa fa-remove"></i>
-        </a>
         <img
           src="./assets/images/img-01.jpg"
           style="width: 100%"
@@ -229,14 +281,15 @@
       </div>
     </nav>
 
-    <!-- Overlay effect when opening sidebar on small screens -->
-    <div
-      class="w3-overlay w3-hide-large w3-animate-opacity"
-      onclick="w3_close()"
-      style="cursor: pointer"
-      title="close side menu"
-      id="myOverlay"
-    ></div>
+    <!-- Toggle button for mobile view -->
+    <div class="w3-top w3-hide-large">
+      <span
+        id="menu-toggle"
+        class="w3-button w3-padding-large w3-white"
+        onclick="toggleMenu()"
+        >☰</span
+      >
+    </div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left: 300px">
@@ -280,18 +333,31 @@
         >
           <b>My Projects</b>
         </h4>
-        <h5 style="margin-left: 10px; color: rgb(174, 7, 171); display: flex; align-items: center;"></h5>
-          <a href="https://github.com/Mohta3b" target="_blank" style="text-decoration: none; color: rgb(174, 7, 171);">
-            <i class="fa fa-github" style="margin-right: 8px; font-size: larger;"></i> 
+        <h5
+          style="
+            margin-left: 10px;
+            color: rgb(174, 7, 171);
+            display: flex;
+            align-items: center;
+          "
+        >
+          <a
+            href="https://github.com/Mohta3b"
+            target="_blank"
+            style="text-decoration: none; color: rgb(174, 7, 171)"
+          >
+            <i
+              class="fa fa-github"
+              style="margin-right: 8px; font-size: larger"
+            ></i>
             See full list in GitHub
           </a>
           <!-- <span style="margin-left: 8px; font-size: 18px;">➔</span> -->
         </h5>
       </div>
 
-
       <!-- First Photo Grid -->
-      <div class="w3-row-padding">        
+      <div class="w3-row-padding">
         <!-- Page 1 projects -->
         <div class="page-1 w3-third w3-container w3-margin-bottom project">
           <a href="https://github.com/Mohta3b/XV6-Modified" target="_blank">
@@ -476,12 +542,15 @@
             <p>Design and code a fucking compiler!</p>
           </div>
         </div>
-      
-      <div
+
+        <div
           class="page-2 w3-third w3-container w3-margin-bottom project"
           style="display: none"
         >
-          <a href="https://github.com/Mohta3b/Network-Routing-Protocols" target="_blank">
+          <a
+            href="https://github.com/Mohta3b/Network-Routing-Protocols"
+            target="_blank"
+          >
             <img
               src="./assets/images/network.png"
               alt="network"
@@ -512,8 +581,7 @@
             <p>Design and analyzed network routing protocols.</p>
           </div>
         </div>
-
-    </div>
+      </div>
       <!-- Pagination -->
       <div class="w3-center w3-padding-32">
         <div class="w3-bar">
@@ -546,7 +614,6 @@
         </div>
       </div>
 
-
       <div
         class="w3-container w3-padding-large w3-card"
         style="
@@ -557,7 +624,10 @@
         "
         id="teaching"
       >
-      <meta name="description" content="Join the Blockchain & Cryptography course by Amir Ali Vahidi, covering smart contracts, Ethereum, and Cryptography basics and Web3 technology.">
+        <meta
+          name="description"
+          content="Join the Blockchain & Cryptography course by Amir Ali Vahidi, covering smart contracts, Ethereum, and Cryptography basics and Web3 technology."
+        />
         <h4
           style="
             font-size: 24px;
@@ -569,19 +639,89 @@
         >
           <b>Teaching</b>
         </h4>
-        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
-          <h3 style="color: #333;">Blockchain & Cryptography Course (Summer 2024)</h3>
-          <p style="color: #666;">Instructed by Me and <a href="https://github.com/SyntheticDemon" target="_blank" style="color: rgb(124, 5, 116);">Pouria Tajmehrabi</a> at the <a href="https://ut-acm.ir" target="_blank" style="color: rgb(124, 5, 116);">University of Tehran ACM Chapter</a>. Our course materials are available online as follows:</p>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-              <li><a target="_blank" href="https://github.com/Mohta3b/Blockchain-Summer2024" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Course GitHub Page</a></li>
-              <li><a target="_blank" href="https://drive.google.com/drive/folders/1uRs6k9zqZfh3qXNs3q1kTkGioQkIqQyC?usp=drive_link" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Lectures, Slides, Assignments, and Syllabus</a></li>
-              <li><a target="_blank" href="https://github.com/Mohta3b/ERC-20-Token-Deployment-on-Ethereum-Testnet" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Designed Computer Assignment</a></li>
+        <div
+          style="
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+          "
+        >
+          <h3 style="color: #333">
+            Blockchain & Cryptography Course (Summer 2024)
+          </h3>
+          <p style="color: #666">
+            Instructed by Me and
+            <a
+              href="https://github.com/SyntheticDemon"
+              target="_blank"
+              style="color: rgb(124, 5, 116)"
+              >Pouria Tajmehrabi</a
+            >
+            at the
+            <a
+              href="https://ut-acm.ir"
+              target="_blank"
+              style="color: rgb(124, 5, 116)"
+              >University of Tehran ACM Chapter</a
+            >. Our course materials are available online as follows:
+          </p>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <li>
+              <a
+                target="_blank"
+                href="https://github.com/Mohta3b/Blockchain-Summer2024"
+                style="
+                  color: #007bff;
+                  text-decoration: none;
+                  font-size: 16px;
+                  font-weight: bold;
+                "
+                >Course GitHub Page</a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://drive.google.com/drive/folders/1uRs6k9zqZfh3qXNs3q1kTkGioQkIqQyC?usp=drive_link"
+                style="
+                  color: #007bff;
+                  text-decoration: none;
+                  font-size: 16px;
+                  font-weight: bold;
+                "
+                >Lectures, Slides, Assignments, and Syllabus</a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://github.com/Mohta3b/ERC-20-Token-Deployment-on-Ethereum-Testnet"
+                style="
+                  color: #007bff;
+                  text-decoration: none;
+                  font-size: 16px;
+                  font-weight: bold;
+                "
+                >Designed Computer Assignment</a
+              >
+            </li>
           </div>
         </div>
-        
-        <img src="./assets/images/back.webp" alt="Certificate" style="width:100%">
 
-
+        <img
+          src="./assets/images/back.webp"
+          alt="Certificate"
+          style="width: 100%"
+        />
       </div>
     </div>
 
@@ -592,13 +732,24 @@
     <script>
       // Script to open and close sidebar
       function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-        document.getElementById("myOverlay").style.display = "block";
+        document.getElementById("mySidebar").classList.add("opened");
       }
 
       function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-        document.getElementById("myOverlay").style.display = "none";
+        document.getElementById("mySidebar").classList.remove("opened");
+      }
+
+      function toggleMenu() {
+        var sidebar = document.getElementById("mySidebar");
+        var menuToggle = document.getElementById("menu-toggle");
+
+        if (sidebar.classList.contains("opened")) {
+          sidebar.classList.remove("opened");
+          menuToggle.innerHTML = "☰"; // Change to ☰ when closed
+        } else {
+          sidebar.classList.add("opened");
+          menuToggle.innerHTML = "✖"; // Change to X when opened
+        }
       }
 
       function showPage(pageNumber) {
@@ -636,35 +787,49 @@
       // Show page 1 by default when the page loads
       showPage(1);
 
-
       // Toggle scroll direction (up or down)
-document.getElementById("scrollButton").addEventListener("click", function(e) {
-    e.preventDefault();
-    const target = document.querySelector("#teaching");
+      document
+        .getElementById("scrollButton")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector("#teaching");
 
-    // Check the current icon and scroll accordingly
-    if (this.querySelector('i').classList.contains("fa-chevron-down")) {
-        // Scroll down to target
-        target.scrollIntoView({ behavior: "smooth" });
-        this.querySelector('i').classList.replace("fa-chevron-down", "fa-chevron-up");
-    } else {
-        // Scroll back to the top
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        this.querySelector('i').classList.replace("fa-chevron-up", "fa-chevron-down");
-    }
-});
+          // Check the current icon and scroll accordingly
+          if (this.querySelector("i").classList.contains("fa-chevron-down")) {
+            // Scroll down to target
+            target.scrollIntoView({ behavior: "smooth" });
+            this.querySelector("i").classList.replace(
+              "fa-chevron-down",
+              "fa-chevron-up"
+            );
+          } else {
+            // Scroll back to the top
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            this.querySelector("i").classList.replace(
+              "fa-chevron-up",
+              "fa-chevron-down"
+            );
+          }
+        });
 
-// Automatically toggle the icon based on scroll position
-window.addEventListener('scroll', function() {
-    const scrollButtonIcon = document.getElementById('scrollButton').querySelector('i');
+      // Automatically toggle the icon based on scroll position
+      window.addEventListener("scroll", function () {
+        const scrollButtonIcon = document
+          .getElementById("scrollButton")
+          .querySelector("i");
 
-    if (window.scrollY > 100) {
-        scrollButtonIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-    } else {
-        scrollButtonIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
-    }
-});
-
+        if (window.scrollY > 100) {
+          scrollButtonIcon.classList.replace(
+            "fa-chevron-down",
+            "fa-chevron-up"
+          );
+        } else {
+          scrollButtonIcon.classList.replace(
+            "fa-chevron-up",
+            "fa-chevron-down"
+          );
+        }
+      });
     </script>
   </body>
 </html>

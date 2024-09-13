@@ -28,6 +28,67 @@
       h6 {
         font-family: "Raleway", sans-serif;
       }
+
+      /* Sidebar styles */
+      .w3-sidebar {
+        z-index: 3;
+        width: 300px;
+        background-image: url("./assets/images/back1.jpg");
+        background-size: cover;
+        display: none; /* Hidden by default for small screens */
+      }
+      /* Show sidebar on larger screens */
+      @media (min-width: 601px) {
+        .w3-sidebar {
+          display: block;
+        }
+        .w3-main {
+          margin-left: 300px; /* The same width as the sidebar */
+        }
+      }
+
+      @media (max-width: 600px) {
+        .w3-main {
+          margin-top: 47px; /* Adjust this value as needed */
+        }
+
+        .w3-sidebar.opened {
+          /* margin-top: 12px; */
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          height: 100%; /* Ensure the sidebar takes full height */
+        }
+      }
+
+      /* Fix the button position and z-index */
+      .w3-top.w3-hide-large {
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      #menu-toggle {
+        background-color: #808080; /* Grey background */
+        color: white; /* White text color */
+        font-size: 16px; /* Adjust font size as needed */
+        padding: 10px; /* Adjust padding as needed */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Rounded corners (optional) */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s; /* Smooth background color transition */
+      }
+
+      #menu-toggle:hover {
+        background-color: #666666; /* Darker grey on hover */
+      }
+
+      .w3-top.w3-hide-large span {
+        margin-left: 0px; /* Adjusted margin to avoid content overlap */
+      }
     </style>
   </head>
   <body
@@ -51,14 +112,6 @@
     >
       <br />
       <div class="w3-container">
-        <a
-          href="#"
-          onclick="w3_close()"
-          class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
-          title="close menu"
-        >
-          <i class="fa fa-remove"></i>
-        </a>
         <img
           src="./assets/images/img-01.jpg"
           style="width: 100%"
@@ -141,14 +194,15 @@
       </div>
     </nav>
 
-    <!-- Overlay effect when opening sidebar on small screens -->
-    <div
-      class="w3-overlay w3-hide-large w3-animate-opacity"
-      onclick="w3_close()"
-      style="cursor: pointer"
-      title="close side menu"
-      id="myOverlay"
-    ></div>
+    <!-- Toggle button for mobile view -->
+    <div class="w3-top w3-hide-large">
+      <span
+        id="menu-toggle"
+        class="w3-button w3-padding-large w3-white"
+        onclick="toggleMenu()"
+        >☰</span
+      >
+    </div>
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left: 300px">
@@ -171,7 +225,10 @@
             text-align: center;
           "
         >
-          <b>My Thoughts & Reviews <i class="fas fa-user-astronaut" style="font-size: 24px;"></i></b>
+          <b
+            >My Thoughts & Reviews
+            <i class="fas fa-user-astronaut" style="font-size: 24px"></i
+          ></b>
         </h4>
       </div>
 
@@ -185,33 +242,52 @@
         "
         id="idea"
       >
-      <p style="line-height: 1.8; color: #444">
-        Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw
-      </p>
+        <p style="line-height: 1.8; color: #444">
+          Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw
+        </p>
 
-      <!-- Images of Me -->
-      <div class="w3-row-padding w3-padding-16" id="about_pic">
-      <div class="w3-col m6">
-        <img src="./assets/images/Under-Construction.png" alt="Me" style="width:100%">
-      </div>
-      <div class="w3-col m6">
-        <img src="/assets/images/under_constuction1.png" alt="Me" style="width:100%">
-      </div>
+        <!-- Images of Me -->
+        <div class="w3-row-padding w3-padding-16" id="about_pic">
+          <div class="w3-col m6">
+            <img
+              src="./assets/images/Under-Construction.png"
+              alt="Me"
+              style="width: 100%"
+            />
+          </div>
+          <div class="w3-col m6">
+            <img
+              src="/assets/images/under_constuction1.png"
+              alt="Me"
+              style="width: 100%"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
-
     <script>
-        // Script to open and close sidebar
-        function w3_open() {
-          document.getElementById("mySidebar").style.display = "block";
-          document.getElementById("myOverlay").style.display = "block";
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").classList.add("opened");
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").classList.remove("opened");
+      }
+
+      function toggleMenu() {
+        var sidebar = document.getElementById("mySidebar");
+        var menuToggle = document.getElementById("menu-toggle");
+
+        if (sidebar.classList.contains("opened")) {
+          sidebar.classList.remove("opened");
+          menuToggle.innerHTML = "☰"; // Change to ☰ when closed
+        } else {
+          sidebar.classList.add("opened");
+          menuToggle.innerHTML = "✖"; // Change to X when opened
         }
-  
-        function w3_close() {
-          document.getElementById("mySidebar").style.display = "none";
-          document.getElementById("myOverlay").style.display = "none";
-        }
-      </script>
-    </body>
- </html>
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amirali Vahidi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      .project {
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+      }
+
+      .project.show-left {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .project.show-right {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .project:nth-child(1) {
+        transition-delay: 0s;
+      }
+
+      .project:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      .project:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+
+
+
+      /* Scroll Button */
+#scrollButton {
+  position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Set width and height to be equal */
+    height: 60px;
+    background-color: #073463;
+    color: white;
+    border-radius: 50%; /* Make it circular */
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px; /* Vertically center the icon */
+    text-decoration: none;
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.5);
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+    z-index: 1000;
+}
+
+/* Hover Effect */
+#scrollButton:hover {
+    background-color: #0056b3;
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.7);
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Glowing Effect */
+#scrollButton::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: rgba(0, 123, 255, 0.5);
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#scrollButton:hover::before {
+    opacity: 1;
+}
+
+
+
+    </style>
+  </head>
+  <body
+    class="w3-light-grey w3-content"
+    style="
+      max-width: 1600px;
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.6;
+    "
+  >
+    <!-- Sidebar/menu -->
+    <nav
+      class="w3-sidebar w3-collapse w3-bar-block w3-animate-left"
+      style="
+        z-index: 3;
+        width: 300px;
+        background-image: url('./assets/images/back1.jpg');
+        background-size: cover;
+      "
+      id="mySidebar"
+    >
+      <br />
+      <div class="w3-container">
+        <a
+          href="#"
+          onclick="w3_close()"
+          class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
+          title="close menu"
+        >
+          <i class="fa fa-remove"></i>
+        </a>
+        <img
+          src="./assets/images/img-01.jpg"
+          style="width: 100%"
+          class="w3-round"
+        /><br /><br />
+        <h2 style="color: white"><b>Amirali Vahidi</b></h2>
+        <!-- <p class="w3-text-grey">Template by W3.CSS</p> -->
+      </div>
+
+      <!-- <hr style="border-color: rgba(255, 255, 255, 0.0);"> -->
+
+      <div class="w3-bar-block">
+        <a
+          href="index.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-user fa-fw w3-margin-right w3-text-teal"></i>ABOUT ME
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="projects.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-th-large fa-fw w3-margin-right w3-text-teal"></i>MY
+          PROJECTS
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="reflections.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-pencil fa-fw w3-margin-right w3-text-teal"></i>MY
+          REFLECTIONS
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="contact.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-envelope fa-fw w3-margin-right w3-text-teal"></i
+          >CONTACT ME
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="./assets/files/newCV.pdf"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+          target="_blank"
+        >
+          <i class="fa fa-file fa-fw w3-margin-right w3-text-teal"></i>DOWNLOAD
+          CV
+        </a>
+      </div>
+
+      <!-- Footer Section -->
+      <div
+        class="w3-container w3-padding-small w3-text-white"
+        style="
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.8);
+          font-size: 12px;
+        "
+      >
+        <p>© 2024 Amirali Vahidi</p>
+      </div>
+    </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div
+      class="w3-overlay w3-hide-large w3-animate-opacity"
+      onclick="w3_close()"
+      style="cursor: pointer"
+      title="close side menu"
+      id="myOverlay"
+    ></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left: 300px">
+      <!-- <div
+        style="
+          background-image: url('./assets/images/Under-Construction\(2\).png'); /* Replace with your image path */
+          background-size: contain;
+          background-position: center;
+          background-repeat: repeat;
+          width: 100%;
+          height: 200px; /* Adjust height as needed */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white; /* Text color */
+          text-align: center;
+          background-color: black; /* Semi-transparent background */
+          padding: 20px;
+          border-radius: 10px; /* Rounded corners */
+        "
+      >
+    </div> -->
+      <div
+        class="w3-container w3-padding-large w3-card"
+        style="
+          margin-bottom: 32px;
+          background-color: #f5f5f5;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+        id="projects"
+      >
+        <h4
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #333;
+            text-align: left;
+          "
+        >
+          <b>My Projects</b>
+        </h4>
+        <h5 style="margin-left: 10px; color: rgb(174, 7, 171); display: flex; align-items: center;"></h5>
+          <a href="https://github.com/Mohta3b" target="_blank" style="text-decoration: none; color: rgb(174, 7, 171);">
+            <i class="fa fa-github" style="margin-right: 8px; font-size: larger;"></i> 
+            See full list in GitHub
+          </a>
+          <!-- <span style="margin-left: 8px; font-size: 18px;">➔</span> -->
+        </h5>
+      </div>
+
+
+      <!-- First Photo Grid -->
+      <div class="w3-row-padding">        
+        <!-- Page 1 projects -->
+        <div class="page-1 w3-third w3-container w3-margin-bottom project">
+          <a href="https://github.com/Mohta3b/XV6-Modified" target="_blank">
+            <img
+              src="./assets/images/xv6.jpg"
+              alt="xv6, a simple Unix-like teaching operating system"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <p>
+                <b
+                  ><a
+                    href="https://github.com/Mohta3b/XV6-Modified"
+                    target="_blank"
+                    style="text-decoration: none; color: black"
+                    >XV6-Modified</a
+                  ></b
+                >
+              </p>
+              <p>2022-2023</p>
+            </div>
+            <p>
+              Praesent tincidunt sed tellus ut rutrum. Sed vitae justo
+              condimentum, porta lectus vitae, ultricies congue gravida diam non
+              fringilla.
+            </p>
+          </div>
+        </div>
+
+        <div class="page-1 w3-third w3-container w3-margin-bottom project">
+          <a
+            href="https://github.com/Mohta3b/TCP-Congestion-Control-Mechanisms"
+            target="_blank"
+          >
+            <img
+              src="./assets/images/tcp.webp"
+              alt="tcp"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <p>
+              <b
+                ><a
+                  href="https://github.com/Mohta3b/TCP-Congestion-Control-Mechanisms"
+                  target="_blank"
+                  style="text-decoration: none; color: black"
+                  >TCP Congestion Control Mechanisms</a
+                ></b
+              >
+            </p>
+            <p>June 2023</p>
+            <p>
+              Praesent tincidunt sed tellus ut rutrum. Sed vitae justo
+              condimentum, porta lectus vitae, ultricies congue gravida diam non
+              fringilla.
+            </p>
+          </div>
+        </div>
+
+        <div class="page-1 w3-third w3-container w3-margin-bottom project">
+          <a
+            href="https://github.com/Mohta3b/ERC-20-Token-Deployment-on-Ethereum-Testnet"
+            target="_blank"
+          >
+            <img
+              src="./assets/images/erc20.webp"
+              alt="ERC20Token"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <p>
+                <b
+                  ><a
+                    href="https://github.com/Mohta3b/ERC-20-Token-Deployment-on-Ethereum-Testnet"
+                    target="_blank"
+                    style="text-decoration: none; color: black"
+                    >ERC20 Token Deployment</a
+                  ></b
+                >
+              </p>
+              <p>Summer 2024</p>
+            </div>
+            <p>
+              Deployed a simple and secure ERC20 token on the Ethereum testnet
+              blockchain using solidity.
+            </p>
+          </div>
+        </div>
+
+        <!-- Page 2 projects -->
+        <div
+          class="page-2 w3-third w3-container w3-margin-bottom project"
+          style="display: none"
+        >
+          <a
+            href="https://github.com/Mohta3b/IoT-Based-Authentication"
+            target="_blank"
+          >
+            <img
+              src="./assets/images/IoT.jpg"
+              alt="IoT-based authentication"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <p>
+                <b
+                  ><a
+                    href="https://github.com/Mohta3b/IoT-Based-Authentication"
+                    target="_blank"
+                    style="text-decoration: none; color: black"
+                    >IoT-Based Authentication</a
+                  ></b
+                >
+              </p>
+              <p>2024</p>
+            </div>
+            <p>Huh!</p>
+          </div>
+        </div>
+
+        <div
+          class="page-2 w3-third w3-container w3-margin-bottom project"
+          style="display: none"
+        >
+          <a href="https://github.com/Mohta3b/LogicPL-Compiler" target="_blank">
+            <img
+              src="./assets/images/compiler.jpg"
+              alt="LogicPL Compliler"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <p>
+                <b
+                  ><a
+                    href="https://github.com/Mohta3b/LogicPL-Compiler"
+                    target="_blank"
+                    style="text-decoration: none; color: black"
+                    >LogicPL Compiler</a
+                  ></b
+                >
+              </p>
+              <p>2023</p>
+            </div>
+            <p>Design and code a fucking compiler!</p>
+          </div>
+        </div>
+      
+      <div
+          class="page-2 w3-third w3-container w3-margin-bottom project"
+          style="display: none"
+        >
+          <a href="https://github.com/Mohta3b/Network-Routing-Protocols" target="_blank">
+            <img
+              src="./assets/images/network.png"
+              alt="network"
+              style="width: 100%; height: 250px; object-fit: cover"
+              class="w3-hover-opacity"
+            />
+          </a>
+          <div class="w3-container w3-white">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <p>
+                <b
+                  ><a
+                    href="https://github.com/Mohta3b/Network-Routing-Protocols"
+                    target="_blank"
+                    style="text-decoration: none; color: black"
+                    >Network Routing Protocols</a
+                  ></b
+                >
+              </p>
+              <p>2024</p>
+            </div>
+            <p>Design and analyzed network routing protocols.</p>
+          </div>
+        </div>
+
+    </div>
+      <!-- Pagination -->
+      <div class="w3-center w3-padding-32">
+        <div class="w3-bar">
+          <a
+            href="#"
+            class="w3-bar-item w3-button w3-hover-black"
+            onclick="showPage(1)"
+            >«</a
+          >
+          <a
+            href="#"
+            class="w3-bar-item w3-button"
+            id="page-1-btn"
+            onclick="showPage(1)"
+            >1</a
+          >
+          <a
+            href="#"
+            class="w3-bar-item w3-button w3-hover-black"
+            id="page-2-btn"
+            onclick="showPage(2)"
+            >2</a
+          >
+          <a
+            href="#"
+            class="w3-bar-item w3-button w3-hover-black"
+            onclick="showPage(2)"
+            >»</a
+          >
+        </div>
+      </div>
+
+
+      <div
+        class="w3-container w3-padding-large w3-card"
+        style="
+          margin-bottom: 32px;
+          background-color: #f5f5f5;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+        id="teaching"
+      >
+      <meta name="description" content="Join the Blockchain & Cryptography course by Amir Ali Vahidi, covering smart contracts, Ethereum, and Cryptography basics and Web3 technology.">
+        <h4
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #333;
+            /* text-align: center; */
+          "
+        >
+          <b>Teaching</b>
+        </h4>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+          <h3 style="color: #333;">Blockchain & Cryptography Course (Summer 2024)</h3>
+          <p style="color: #666;">Instructed by Me and <a href="https://github.com/SyntheticDemon" target="_blank" style="color: rgb(124, 5, 116);">Pouria Tajmehrabi</a> at the <a href="https://ut-acm.ir" target="_blank" style="color: rgb(124, 5, 116);">University of Tehran ACM Chapter</a>. Our course materials are available online as follows:</p>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+              <li><a target="_blank" href="https://github.com/Mohta3b/Blockchain-Summer2024" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Course GitHub Page</a></li>
+              <li><a target="_blank" href="https://drive.google.com/drive/folders/1uRs6k9zqZfh3qXNs3q1kTkGioQkIqQyC?usp=drive_link" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Lectures, Slides, Assignments, and Syllabus</a></li>
+              <li><a target="_blank" href="https://github.com/Mohta3b/ERC-20-Token-Deployment-on-Ethereum-Testnet" style="color: #007bff; text-decoration: none; font-size: 16px; font-weight: bold;">Designed Computer Assignment</a></li>
+          </div>
+        </div>
+        
+        <img src="./assets/images/back.webp" alt="Certificate" style="width:100%">
+
+
+      </div>
+    </div>
+
+    <a id="scrollButton" href="#">
+      <i class="fa fa-chevron-down"></i>
+    </a>
+
+    <script>
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+      }
+
+      function showPage(pageNumber) {
+        // Hide all projects by removing the classes
+        document.querySelectorAll(".page-1, .page-2").forEach((item) => {
+          item.classList.remove("show-left", "show-right");
+          item.style.display = "none";
+        });
+
+        // Show items based on the selected page number with smooth animation
+        setTimeout(() => {
+          let delay = 0;
+          if (pageNumber === 1) {
+            document.querySelectorAll(".page-1").forEach((item, index) => {
+              item.style.display = "block";
+              // Slide in from the left with a delay for each project
+              setTimeout(() => item.classList.add("show-left"), delay);
+              delay += 200; // Delay increment for each item (0.2s)
+            });
+            document.getElementById("page-1-btn").classList.add("w3-black");
+            document.getElementById("page-2-btn").classList.remove("w3-black");
+          } else if (pageNumber === 2) {
+            document.querySelectorAll(".page-2").forEach((item, index) => {
+              item.style.display = "block";
+              // Slide in from the right with a delay for each project
+              setTimeout(() => item.classList.add("show-right"), delay);
+              delay += 200; // Delay increment for each item (0.2s)
+            });
+            document.getElementById("page-2-btn").classList.add("w3-black");
+            document.getElementById("page-1-btn").classList.remove("w3-black");
+          }
+        }, 50); // Delay to ensure CSS transition is visible
+      }
+
+      // Show page 1 by default when the page loads
+      showPage(1);
+
+
+      // Toggle scroll direction (up or down)
+document.getElementById("scrollButton").addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector("#teaching");
+
+    // Check the current icon and scroll accordingly
+    if (this.querySelector('i').classList.contains("fa-chevron-down")) {
+        // Scroll down to target
+        target.scrollIntoView({ behavior: "smooth" });
+        this.querySelector('i').classList.replace("fa-chevron-down", "fa-chevron-up");
+    } else {
+        // Scroll back to the top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        this.querySelector('i').classList.replace("fa-chevron-up", "fa-chevron-down");
+    }
+});
+
+// Automatically toggle the icon based on scroll position
+window.addEventListener('scroll', function() {
+    const scrollButtonIcon = document.getElementById('scrollButton').querySelector('i');
+
+    if (window.scrollY > 100) {
+        scrollButtonIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    } else {
+        scrollButtonIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    }
+});
+
+    </script>
+  </body>
+</html>

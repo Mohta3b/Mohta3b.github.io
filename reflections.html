@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amirali Vahidi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="w3-light-grey w3-content"
+    style="
+      max-width: 1600px;
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.6;
+    "
+  >
+    <!-- Sidebar/menu -->
+    <nav
+      class="w3-sidebar w3-collapse w3-bar-block w3-animate-left"
+      style="
+        z-index: 3;
+        width: 300px;
+        background-image: url('./assets/images/back1.jpg');
+        background-size: cover;
+      "
+      id="mySidebar"
+    >
+      <br />
+      <div class="w3-container">
+        <a
+          href="#"
+          onclick="w3_close()"
+          class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
+          title="close menu"
+        >
+          <i class="fa fa-remove"></i>
+        </a>
+        <img
+          src="./assets/images/img-01.jpg"
+          style="width: 100%"
+          class="w3-round"
+        /><br /><br />
+        <h2 style="color: white"><b>Amirali Vahidi</b></h2>
+        <!-- <p class="w3-text-grey">Template by W3.CSS</p> -->
+      </div>
+
+      <!-- <hr style="border-color: rgba(255, 255, 255, 0.0);"> -->
+
+      <div class="w3-bar-block">
+        <a
+          href="index.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-user fa-fw w3-margin-right w3-text-teal"></i>ABOUT ME
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="projects.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-th-large fa-fw w3-margin-right w3-text-teal"></i>MY
+          PROJECTS
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="reflections.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-pencil fa-fw w3-margin-right w3-text-teal"></i>MY
+          REFLECTIONS
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="contact.html"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+        >
+          <i class="fa fa-envelope fa-fw w3-margin-right w3-text-teal"></i
+          >CONTACT ME
+        </a>
+
+        <!-- <hr style="border-color: rgba(255, 255, 255, 0.5);"> -->
+
+        <a
+          href="./assets/files/newCV.pdf"
+          onclick="w3_close()"
+          class="w3-bar-item w3-button w3-padding w3-text-white"
+          target="_blank"
+        >
+          <i class="fa fa-file fa-fw w3-margin-right w3-text-teal"></i>DOWNLOAD
+          CV
+        </a>
+      </div>
+
+      <!-- Footer Section -->
+      <div
+        class="w3-container w3-padding-small w3-text-white"
+        style="
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.8);
+          font-size: 12px;
+        "
+      >
+        <p>© 2024 Amirali Vahidi</p>
+      </div>
+    </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div
+      class="w3-overlay w3-hide-large w3-animate-opacity"
+      onclick="w3_close()"
+      style="cursor: pointer"
+      title="close side menu"
+      id="myOverlay"
+    ></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left: 300px">
+      <div
+        class="w3-container w3-padding-large w3-card"
+        style="
+          margin-bottom: 32px;
+          background-color: #f5f5f5;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+        id="projects"
+      >
+        <h4
+          style="
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #333;
+            text-align: center;
+          "
+        >
+          <b>My Thoughts & Reviews <i class="fas fa-user-astronaut" style="font-size: 24px;"></i></b>
+        </h4>
+      </div>
+
+      <div
+        class="w3-container w3-padding-large w3-card"
+        style="
+          margin-bottom: 32px;
+          background-color: #f5f5f5;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+        id="idea"
+      >
+      <p style="line-height: 1.8; color: #444">
+        Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw Blaw
+      </p>
+
+      <!-- Images of Me -->
+      <div class="w3-row-padding w3-padding-16" id="about_pic">
+      <div class="w3-col m6">
+        <img src="./assets/images/Under-Construction.png" alt="Me" style="width:100%">
+      </div>
+      <div class="w3-col m6">
+        <img src="/assets/images/under_constuction1.png" alt="Me" style="width:100%">
+      </div>
+      </div>
+    </div>
+
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+          document.getElementById("mySidebar").style.display = "block";
+          document.getElementById("myOverlay").style.display = "block";
+        }
+  
+        function w3_close() {
+          document.getElementById("mySidebar").style.display = "none";
+          document.getElementById("myOverlay").style.display = "none";
+        }
+      </script>
+    </body>
+ </html>

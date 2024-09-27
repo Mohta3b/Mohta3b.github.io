@@ -28,6 +28,7 @@
       h5,
       h6 {
         font-family: "Raleway", sans-serif;
+        font-size: 1.1rem; /* Responsive font size */
       }
 
       /* Sidebar styles */
@@ -69,6 +70,7 @@
         height: auto;
         transition: transform 0.5s ease;
         animation: bounce 2s infinite;
+        max-width: 100%;
       }
 
       .footer-content img:hover {
@@ -81,23 +83,58 @@
         color: #333;
       }
 
-      /* Show sidebar on larger screens */
       @media (min-width: 601px) {
         .w3-sidebar {
-          display: block;
+          display: block; /* Make sidebar visible */
+          position: fixed; /* Keep it fixed on the side */
+          top: 0;
+          left: 0;
+          height: 100%; /* Full height of the viewport */
+          width: 300px; /* Fixed width of the sidebar */
+          background-color: rgba(
+            0,
+            0,
+            0,
+            0.8
+          ); /* Dark semi-transparent background */
+          z-index: 9999; /* Keep sidebar on top */
         }
+
         .w3-main {
-          margin-left: 300px; /* The same width as the sidebar */
+          margin-left: 300px; /* Add space for the sidebar */
+          padding: 20px; /* Add some padding around the main content */
+          transition: margin-left 0.3s ease; /* Smooth transition when resizing */
+        }
+
+        .footer {
+          margin-left: 300px; /* Ensure the footer aligns with the main content */
         }
       }
 
       @media (max-width: 600px) {
+        h2 {
+          font-size: 1rem; /* Smaller font for mobile */
+        }
+        p {
+          font-size: 0.9rem;
+        }
+
         .w3-main {
           margin-top: 47px; /* Adjust this value as needed */
+          margin-left: 0;
         }
 
         .footer {
           margin-left: auto;
+        }
+
+        .footer-content {
+          flex-direction: column; /* Stack footer items vertically */
+          align-items: center;
+        }
+        #menu-toggle {
+          font-size: 14px; /* Smaller toggle button for mobile */
+          padding: 8px;
         }
 
         .w3-sidebar.opened {
@@ -162,12 +199,12 @@
         </a>
 
         <a
-          href="projects.html"
+          href="activities.html"
           onclick="w3_close()"
           class="w3-bar-item w3-button w3-padding w3-text-white"
         >
-          <i class="fa fa-th-large fa-fw w3-margin-right w3-text-teal"></i>MY
-          PROJECTS
+          <i class="fa fa-th-large fa-fw w3-margin-right w3-text-teal"></i
+          >ACTIVITIES
         </a>
 
         <a
